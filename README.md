@@ -4,7 +4,7 @@ ERD Explaination
 ![ERD] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/ERD.png?raw=true)
 
 Entities:
-#------------------
+#------------------#
 
 Airplane: It represents a single airplane. It has attributes (Reg#) which is its primary key, plane Type and     hangar it is stored in.
 
@@ -25,7 +25,7 @@ Service: Represents a specific service record for an airplane, with attributes s
 
 
  Relationships:
- #------------------
+ #------------------#
 Owns: Relates and Airplane to an owner, indicating which owner owns which airplane, and includes the purchase date attribute. Since one owner can have many airplanes it is a one to many relationship.
 
 Maintains: Relates an Employee to a Service record, indicating which employee maintains which airplane and when. This is a many to many relationship as one employee can maintain many airplanes and one airplane can be maintained by many employees.
@@ -38,7 +38,7 @@ Stored_in: Relates an airplane to a Hangar, indicating which hangar the airplane
 
 
 Total Participation:
-#----------------------
+#----------------------#
 An AIRPLANE must be associated with a PLANE_TYPE via the OF_TYPE relationship. In other words, each airplane must have a type. This is denoted by the "1" and "1..*" symbols on the OF_TYPE relationship line. 
 
 An AIRPLANE can have zero or more SERVICE records, and each SERVICE record must be associated with at least one airplane. This is denoted by the "0..*" and "1" symbols on the PLANE_SERVICE relationship line.
@@ -61,11 +61,11 @@ Q1 ) Write a SQL query to find the registration numbers of airplanes that have n
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q1_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q1_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Tables AIRPLANE AND SERVICE are left joined on RegNo of Plane, So those planes which have never undergone service are Planes that: i) Have no Service Record and so SERVICE.attributes are null when left joined ii) Have No Service Records with Status Completed or Undergoing
 
 
@@ -76,11 +76,11 @@ Q2 ) Write a SQL query to find the names and addresses of corporations that own 
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q2_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q2_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Tables AIRPLANE AND CORPORATION are INNER JOINED with OWNED_BY Results in a table containing all airplane attributes next to the corporation attribute of the corporations that own those planes Required result is: i) Plane.Of_Type that is present in sub query which returns the Model all plane types with Capacity greater than 200)
 
 
@@ -91,11 +91,11 @@ Q3 ) Write a SQL query to find the average salary of employees who work the nigh
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q3_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q3_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Aggregate Function "AVG" is used to find Average of Salaries corresponding to EMPLOYEE.EShift = 'Night'
 
 
@@ -106,11 +106,11 @@ Q4 ) Write a SQL query to find the top 5 employees with the highest total number
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q4_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q4_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 TOP(5) Function along with aggregate function SUM(SERVICE.Hours) is used on the INNER JOIN of MAINTAIN and SERVICE Tables. Along with Group By function on Employees SSN of MAINTAIN Table Sorted by Total Hours Worked by each employee in descending order. Group by groups all SERVICE entries with same SSN, their respective SHours are all added by SUM(SHours)
 
 
@@ -121,11 +121,11 @@ Q5 ) Write a SQL query to find the names and registration numbers of airplanes t
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q5_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q5_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 TOP(5) Function along with aggregate function SUM(SERVICE.Hours) is used on the INNER JOIN of MAINTAIN and SERVICE Tables. Along with Group By function on Employees SSN of MAINTAIN Table Sorted by Total Hours Worked by each employee in descending order. Group by groups all SERVICE entries with same SSN, their respective SHours are all added by SUM(SHours)
 
 
@@ -136,11 +136,11 @@ Q6 ) Write a SQL query to find the names and phone numbers of all owners who hav
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q6_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q6_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 The desired result is achieved by the UNION of 2 queries:
 i) OWNED_BY and PERSON Tables are Inner joined and DATEDIFF
 Function is used to find the difference between Purchase Date
@@ -157,11 +157,11 @@ Q7 ) Write a SQL query to find the number of airplanes each pilot is authorized 
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q7_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q7_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 The FLIES Table is INNER JOINED with PILOT and PERSON Tables.
 GROUP BY along with the aggregate function COUNT() is used to count
 the number of different FLIES tuples for a single Pilot SSN to
@@ -175,11 +175,11 @@ Q8 ) Write a SQL query to find the location and capacity of the hangar with the 
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q8_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q8_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 This query is solved by Inner joining AIRPLANE and HANGAR Tables
 and grouping by HANGAR.Number using the "HAVING" keyword in
 combinatoin with a subquery that returns a table of availablespace 
@@ -195,11 +195,11 @@ Q9 ) Write a SQL query to find the number of planes owned by each corporation, s
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q9_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q9_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 OWNED_BY and CORPORATION Tbales are inner joined and grouped by CorporationID.
 This gives a table where each Plane_Id is related to its owner corporation.
 The occurances of each corporationID are counted and sorted in descending order.
@@ -212,11 +212,11 @@ Q10 ) Write a SQL query to find the average number of maintenance hours per plan
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q10_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q10_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 AIRPLANE is inner joined with PLANE_TYPE and SERVICE Tables grouped by 
 PLANE_TYPE.Model. Using the function AVG(SHours) the average of service
 hours of each plane model is drawn.
@@ -229,11 +229,11 @@ Q11 ) Write a SQL query to find the names of owners who have purchased a plane t
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q11_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q11_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 This query has been achieved using the combination of 3 queries with 2 being 
 subqueries.
 i) The inner most sub query provides the Employee SSN of the employees
@@ -250,11 +250,11 @@ Q12 ) Write a SQL query to find the names and phone numbers of owners who have p
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q12_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q12_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 This query has been achieved using the combination of 2 queries
 i) Inner Query returns the locations of hangars owned by corporations
 ii) The outer query checks whether the person owner's location is 
@@ -268,11 +268,11 @@ Q13 ) Write a SQL query to find the names of pilots who are qualified to fly a p
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q13_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q13_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 This query has been achieved using the combination of 2 queries
 i) Inner Query returns the plane types of the planes that have an entry in
 SERVICE Table where the Status is 'Undergoing'
@@ -287,11 +287,11 @@ Q14 ) Write a SQL query to find the names of employees who have worked on planes
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q14_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q14_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 This query draws from two seperate inner joined tables:
 i) MAINTAIN inner joined with SERVICE and PERSON
 ii) OWNED_BY inner joined with CORPORATION
@@ -306,11 +306,11 @@ Q15 ) Write a SQL query to find the names of employees who have worked on planes
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q15_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q15_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Union of two seperate Queries is used
 i) SERVICE Table is inner joined with AIRPLANE, MAINTAIN and EMPLOYEE
 For a particular employee if there is a SERVICE entry in MAINTAIN table
@@ -330,11 +330,11 @@ Q16 ) Write a SQL query to find the names and addresses of owners who have purch
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q16_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q16_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 OWNER Name and Address are drawn from inner join of OWNED_BY with PERSON and AIRPLANE
 i) OWNED_BY.PurchasedFrom is Compared with CorporsatonIDs of Corporations who have
 purchased a plane in the past month
@@ -350,11 +350,11 @@ Q17 ) Write a Query to find the total number of planes stored in each hangar.
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q17_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q17_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Entries of AIRPLANE Table are grouped according to the hangar numbers of
 AIRPLANE.StoredIn, then using aggregate function COUNT(*), the number of 
 planes stored per Hangar are calculated
@@ -367,11 +367,11 @@ Q18 ) Write a Query to find the total number of planes of each plane type.
 -------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q18_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q18_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Entries of AIRPLANE Table are grouped according to AIRPLANE.Of_Type, then using aggregate 
 function COUNT(*), the number of planes of a particular plane type are calculated
 
@@ -383,11 +383,11 @@ Q19 ) Write a Query to find the total number of services performed on each plane
 ---------------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q19_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q19_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Entries of SERVICE Table are grouped according to the SERVICE.Plane_Id,
 then using aggregate function COUNT(*), the number of services on a particular
 plane are are calculated. These results are filtered by SERVICES with status not = 'S'
@@ -400,11 +400,11 @@ Q20 ) Write a Query to find the average salary of employees in each shift.
 ---------------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q20_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q20_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Aggregate function AVG(Salary) along with group by (shift) is used on table 
 EMPLOYEE to find avg salary of employees by shift
 
@@ -416,11 +416,11 @@ Q21 ) Write a Query to find the total number of planes each owner owns.
 ---------------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q21_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q21_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Query solved by taking union of two queries
 i) Finds number of planes owned by a coporation
 ii ) Finds number of planes owned by a Person
@@ -435,11 +435,11 @@ Q22 ) Write a Query to find the number of planes each pilot is authorized to fly
 ---------------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q22_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q22_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Aggregate Function COUNT(*) is used to find number of occurances of a pilot's SSN
 in FLIES table. FLIES is inner joined with PERSON to get the Name of the Pilot 
 
@@ -451,11 +451,11 @@ Q23 ) Write a SQL query to find the location, capacity and Available Space of ea
 ---------------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q23_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q23_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Aggregate function COUNT(*) is used along with group by Stored_In attribute
 of AIRPLANE table to determine number of planes stored per hangar.
 Available space per hanger is found by subtracting this count from Capacity
@@ -468,11 +468,11 @@ Q24 ) Write a SQL query to find the Number of employees per shift
 ---------------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q24_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q24_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Aggregate function COUNT(*) is used along with group by EShift on EMPLOYEE
 table to calculate occurances of employee entries with the same EShift values
 
@@ -484,11 +484,11 @@ Q25 ) Write a SQL query to find the average Capacity of Planes weighting more th
 ---------------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q25_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q25_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 AVG(Capacity) funciton is used after filtering PLANE_TYPE by PLANE_TYPE.Weight > 100000
 
 ----------------------------------------------------------------------------
@@ -498,10 +498,10 @@ Q26 ) Write a SQL query to find the Number of Plane types each employee is autho
 ---------------------------------------------------------------------------------
 
 Solution Result:
-#---------------------
+#---------------------#
 ![Q26_Result] (https://github.com/Ahmad-Farhan/i211366_Assignment_2_DB/blob/main/Images/Q26_Result.png?raw=true)
 
 Query Method Used:
-#---------------------
+#---------------------#
 Aggregate function COUNT(*) is used along with group by WORKS_ON.Model calculate 
 occurances of employee entries with the same in WORKS_ON table with different Models
