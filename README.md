@@ -55,8 +55,6 @@ An EMPLOYEE can have zero or more SERVICE records via the MAINTAIN relationship,
 
 An OWNER can own zero or more Airplane's via the OWNS relationship, and each AIRPLANE must be owned by at least one owner. This is denoted by the "0..*" and "1" symbols on the OWNS relationship line.
 
-A PILOT or EMPLOYEE must be a PERSON, and each PERSON entity must be either a PILOT or EMPLOYEE. This is denoted by the circle and arrow symbols on the PILOT and EMPLOYEE entity boxes, pointing to the PERSON entity box.
-
 
 
 ----------------------------------------------------------------------------
