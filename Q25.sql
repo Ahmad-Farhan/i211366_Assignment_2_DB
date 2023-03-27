@@ -1,24 +1,17 @@
 USE AIRPORT;
 
-/*Q25.b ) Write a SQL query to find the location, capacity and Available Space
-	      of each hangar sorted by the available space in descending order.*/
+/*Q25.c ) Write a SQL query to find the average capacity of planes weighing more than 100000kg*/
 
 
-SELECT
-	Location,
-	Capacity,
-	Capacity - COUNT(*) AS AvailableSpace
+SELECT 
+	AVG(Capacity) AS AvgCapacity
 FROM 
-	HANGAR INNER JOIN AIRPLANE
-	ON AIRPLANE.Stored_In = HANGAR.Number
-GROUP BY 
-	HANGAR.Number, 
-	Location, 
-	Capacity 
-ORDER BY 
-	AvailableSpace DESC
+	AIRPLANE INNER JOIN PLANE_TYPE 
+	ON AIRPLANE.Of_Type = PLANE_TYPE.Model
+WHERE 
+	PLANE_TYPE.Weight > 100000
+
 
 
 /*Importance: 
-	Can be used to determine which hangars are least used
-	relative to how much Capacity they have*/
+	Can be used to catagorise which planes have better weight to capacity Ratio*/
